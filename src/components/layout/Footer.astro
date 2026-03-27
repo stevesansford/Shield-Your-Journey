@@ -1,0 +1,97 @@
+---
+import { mainNav, siteInfo } from '../../data/navigation';
+---
+
+<footer class="bg-dark text-gray-300 mt-auto">
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <!-- Brand & Contact -->
+      <div>
+        <a href="/" class="inline-block mb-4">
+          <img src="/images/syj-logo-1.png" alt="Shield Your Journey" class="h-10 w-auto" />
+        </a>
+        <p class="text-sm leading-relaxed mb-4">
+          Protecting RV families with legal, identity, and cyber security solutions.
+        </p>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <i class="fa-solid fa-location-dot text-orange mr-2 w-4"></i>
+            {siteInfo.address.street}, {siteInfo.address.city}, {siteInfo.address.state} {siteInfo.address.zip}
+          </li>
+          <li>
+            <i class="fa-solid fa-phone text-orange mr-2 w-4"></i>
+            <a href={siteInfo.phoneTel} class="hover:text-white">{siteInfo.phone}</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-envelope text-orange mr-2 w-4"></i>
+            <a href={`mailto:${siteInfo.email}`} class="hover:text-white">{siteInfo.email}</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="font-heading text-lg font-semibold text-white mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          {mainNav.map((item) => (
+            <li>
+              <a href={item.href} class="text-sm hover:text-orange transition-colors">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <h3 class="font-heading text-lg font-semibold text-white mb-4">Free RV Protection Resources</h3>
+        <p class="text-sm mb-4">
+          Sign up to receive your free RV Protection Checklist and stay updated with the latest protection tips.
+        </p>
+        <form
+          action="https://app.kit.com/forms/9256182/subscriptions"
+          method="post"
+          data-sv-form="9256182"
+          data-uid="3594af76ce"
+          data-format="inline"
+          data-version="5"
+          data-kit-form
+          class="flex flex-col gap-3"
+        >
+          <input
+            type="email"
+            name="email_address"
+            placeholder="Your email address"
+            class="px-4 py-2.5 rounded bg-gray-800 border border-gray-600 text-white text-sm placeholder-gray-400 focus:outline-none focus:border-orange"
+            required
+          />
+          <button
+            type="submit"
+            class="bg-orange hover:bg-orange-dark text-white font-semibold py-2.5 px-6 rounded transition-colors text-sm"
+          >
+            Get Your Free Checklist
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Social & Copyright -->
+    <div class="border-t border-gray-700 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-gray-500">
+        &copy; {new Date().getFullYear()} Shield Your Journey LLC. All rights reserved.
+      </p>
+      <div class="flex gap-4">
+        <a href={siteInfo.social.facebook} class="text-gray-400 hover:text-orange text-lg" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href={siteInfo.social.instagram} class="text-gray-400 hover:text-orange text-lg" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href={siteInfo.social.youtube} class="text-gray-400 hover:text-orange text-lg" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

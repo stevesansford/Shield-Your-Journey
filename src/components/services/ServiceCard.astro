@@ -1,0 +1,25 @@
+---
+import type { Service } from '../../data/services';
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+---
+
+<div class="bg-white rounded-lg shadow-md p-8 hover:shadow-lg transition-shadow">
+  <div class="w-14 h-14 bg-orange/10 rounded-full flex items-center justify-center mb-5">
+    <i class={`${service.icon} text-2xl text-orange`}></i>
+  </div>
+  <h3 class="font-heading text-xl font-semibold text-dark mb-3">{service.title}</h3>
+  <p class="text-gray-600 text-sm leading-relaxed mb-5">{service.description}</p>
+  <ul class="space-y-2">
+    {service.features.map((feature) => (
+      <li class="flex items-start gap-2 text-sm text-gray-600">
+        <i class="fa-solid fa-check text-orange mt-0.5 shrink-0"></i>
+        <span>{feature}</span>
+      </li>
+    ))}
+  </ul>
+</div>

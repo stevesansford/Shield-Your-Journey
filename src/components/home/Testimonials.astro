@@ -1,0 +1,20 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import TestimonialCard from '../ui/TestimonialCard.astro';
+import { testimonials } from '../../data/testimonials';
+---
+
+<section class="py-16 bg-cream">
+  <div class="max-w-6xl mx-auto px-4">
+    <SectionHeading
+      title="What Our Families Say"
+      subtitle="Hear from RV families who trust Shield Your Journey to keep them protected on the road."
+    />
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {testimonials.map((t) => (
+        <TestimonialCard quote={t.quote} name={t.name} role={t.role} />
+      ))}
+    </div>
+  </div>
+</section>

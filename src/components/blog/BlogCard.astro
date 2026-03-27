@@ -1,0 +1,81 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  author: string;
+  featuredImage: string;
+  featuredImageAlt: string;
+  categories: string[];
+  slug: string;
+}
+
+const { title, description, pubDate, author, featuredImage, featuredImageAlt, categories, slug } = Astro.props;
+
+const formattedDate = pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+  <!-- Featured Image -->
+  <a href={`/news/${slug}/`} class="block">
+    <div class="aspect-video bg-cream flex items-center justify-center">
+      {featuredImage ? (
+        <img
+          src={featuredImage}
+          alt={featuredImageAlt}
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
+      ) : (
+        <div class="text-center text-gray-400">
+          <i class="fa-solid fa-image text-3xl mb-2"></i>
+          <p class="text-xs">[Featured image]</p>
+        </div>
+      )}
+    </div>
+  </a>
+
+  <!-- Content -->
+  <div class="p-6">
+    <!-- Categories -->
+    {categories.length > 0 && (
+      <div class="flex gap-2 mb-3">
+        {categories.map((cat) => (
+          <span class="text-xs font-semibold uppercase tracking-wider text-orange">
+            {cat}
+          </span>
+        ))}
+      </div>
+    )}
+
+    <!-- Title -->
+    <h2 class="font-heading text-xl font-semibold text-dark mb-2">
+      <a href={`/news/${slug}/`} class="hover:text-orange transition-colors">
+        {title}
+      </a>
+    </h2>
+
+    <!-- Excerpt -->
+    <p class="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
+      {description}
+    </p>
+
+    <!-- Meta -->
+    <div class="flex items-center justify-between text-xs text-gray-500">
+      <span>By {author}</span>
+      <time datetime={pubDate.toISOString()}>{formattedDate}</time>
+    </div>
+
+    <!-- Read More -->
+    <a
+      href={`/news/${slug}/`}
+      class="inline-flex items-center gap-1 mt-4 text-sm font-semibold text-teal hover:text-orange transition-colors"
+    >
+      Read more <i class="fa-solid fa-arrow-right text-xs"></i>
+    </a>
+  </div>
+</article>

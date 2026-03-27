@@ -1,0 +1,61 @@
+---
+interface Props {
+  type: 'LocalBusiness' | 'Service' | 'BlogPosting' | 'WebSite';
+  data?: Record<string, unknown>;
+}
+
+const { type, data = {} } = Astro.props;
+
+const siteUrl = 'https://shieldyourjourney.com';
+
+const schemas: Record<string, Record<string, unknown>> = {
+  LocalBusiness: {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Shield Your Journey LLC',
+    description: 'Legal, identity, and cyber protection services for RV families.',
+    url: siteUrl,
+    telephone: '+1-407-394-5146',
+    email: 'info@shieldyourjourney.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '2212 S Chickasaw Trail',
+      addressLocality: 'Orlando',
+      addressRegion: 'FL',
+      postalCode: '32825',
+      addressCountry: 'US',
+    },
+    ...data,
+  },
+  Service: {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'Shield Your Journey LLC',
+    },
+    ...data,
+  },
+  BlogPosting: {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Shield Your Journey LLC',
+      url: siteUrl,
+    },
+    ...data,
+  },
+  WebSite: {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Shield Your Journey',
+    url: siteUrl,
+    ...data,
+  },
+};
+
+const schema = schemas[type] || schemas.WebSite;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

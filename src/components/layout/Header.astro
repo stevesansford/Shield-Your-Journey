@@ -1,0 +1,89 @@
+---
+import { mainNav, siteInfo } from '../../data/navigation';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="bg-white shadow-sm sticky top-0 z-40">
+  <!-- Top bar with phone -->
+  <div class="bg-teal text-white text-sm py-2">
+    <div class="max-w-6xl mx-auto px-4 flex justify-end">
+      <a href={siteInfo.phoneTel} class="hover:text-orange-light font-semibold tracking-wide">
+        <i class="fa-solid fa-phone mr-2"></i>CALL or TEXT: {siteInfo.phone}
+      </a>
+    </div>
+  </div>
+
+  <!-- Main nav -->
+  <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3">
+      <img src="/images/syj-logo-1.png" alt="Shield Your Journey" class="h-10 w-auto" />
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
+      {mainNav.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            'font-sans font-semibold text-sm uppercase tracking-wider transition-colors',
+            currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
+              ? 'text-orange'
+              : 'text-dark hover:text-orange',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden p-2 text-dark hover:text-orange"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <i class="fa-solid fa-bars text-xl"></i>
+    </button>
+  </div>
+
+  <!-- Mobile nav -->
+  <nav
+    id="mobile-menu"
+    class="hidden md:hidden bg-white border-t border-gray-100 px-4 pb-4"
+    aria-label="Mobile navigation"
+  >
+    {mainNav.map((item) => (
+      <a
+        href={item.href}
+        class:list={[
+          'block py-3 font-sans font-semibold text-sm uppercase tracking-wider border-b border-gray-50',
+          currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
+            ? 'text-orange'
+            : 'text-dark hover:text-orange',
+        ]}
+      >
+        {item.label}
+      </a>
+    ))}
+  </nav>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      menu.classList.toggle('hidden');
+      const icon = btn.querySelector('i');
+      if (icon) {
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-xmark');
+      }
+    });
+  }
+</script>

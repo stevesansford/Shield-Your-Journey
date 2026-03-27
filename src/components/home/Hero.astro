@@ -1,0 +1,24 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<section class="relative text-white py-20 md:py-28 bg-teal">
+  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/syj-hero-rig-at-rama.webp');"></div>
+  <div class="absolute inset-0 bg-black/50"></div>
+  <div class="relative max-w-6xl mx-auto px-4 text-center">
+    <h1 class="font-heading text-3xl md:text-5xl font-bold text-white leading-tight mb-6 max-w-4xl mx-auto">
+      From Cyber Threats to Legal Issues &mdash; Shield Your Journey Covers What Matters Most
+    </h1>
+    <p class="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+      Join the Protected RV Family Community
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <Button href="/services/" variant="primary" size="lg">
+        Explore Our Services
+      </Button>
+      <Button href="/contact/" variant="outline" size="lg" class="border-white text-white hover:bg-white hover:text-teal">
+        Schedule a Consultation
+      </Button>
+    </div>
+  </div>
+</section>

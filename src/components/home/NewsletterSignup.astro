@@ -1,0 +1,39 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<section class="py-16 bg-teal text-white">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="font-heading text-3xl font-bold text-white mb-3">
+      Free RV Protection Resources
+    </h2>
+    <p class="text-white/80 mb-8 text-lg">
+      Get your free RV Protection Checklist and stay updated with the latest tips for keeping your family safe on the road.
+    </p>
+
+    <form
+      action="https://app.kit.com/forms/9256182/subscriptions"
+      method="post"
+      data-sv-form="9256182"
+      data-uid="3594af76ce"
+      data-format="inline"
+      data-version="5"
+      data-kit-form
+      class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto"
+    >
+      <input
+        type="email"
+        name="email_address"
+        placeholder="Enter your email address"
+        class="flex-1 px-4 py-3 rounded text-dark placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-orange"
+        required
+      />
+      <Button type="submit" variant="primary" size="md">
+        Get Free Checklist
+      </Button>
+    </form>
+    <p class="text-white/60 text-xs mt-3">
+      We respect your privacy. Unsubscribe at any time.
+    </p>
+  </div>
+</section>

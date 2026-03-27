@@ -1,0 +1,116 @@
+---
+// Web3Forms contact form
+// Replace YOUR_ACCESS_KEY with your Web3Forms access key from https://web3forms.com
+---
+
+<form action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
+  <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY" />
+  <input type="hidden" name="redirect" value="https://shieldyourjourney.com/thank-you/" />
+  <input type="hidden" name="subject" value="New Contact from Shield Your Journey" />
+  <!-- Honeypot spam protection -->
+  <input type="checkbox" name="botcheck" class="hidden" />
+
+  <!-- Name -->
+  <div>
+    <label for="name" class="block text-sm font-semibold text-dark mb-1">Name</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      required
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+      placeholder="Your full name"
+    />
+  </div>
+
+  <!-- Email -->
+  <div>
+    <label for="email" class="block text-sm font-semibold text-dark mb-1">Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
+      placeholder="your@email.com"
+    />
+  </div>
+
+  <!-- Protection Interest -->
+  <div>
+    <label for="protection_interest" class="block text-sm font-semibold text-dark mb-1">
+      Protection Interest
+    </label>
+    <select
+      id="protection_interest"
+      name="protection_interest"
+      required
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent bg-white"
+    >
+      <option value="">Select your interest</option>
+      <option value="Legal Protection">Legal Protection</option>
+      <option value="Identity Protection">Identity Protection</option>
+      <option value="Cyber Security">Cyber Security</option>
+      <option value="Complete Package">Complete Package</option>
+    </select>
+  </div>
+
+  <!-- RV Status -->
+  <div>
+    <label for="rv_status" class="block text-sm font-semibold text-dark mb-1">
+      Current RV Status
+    </label>
+    <select
+      id="rv_status"
+      name="rv_status"
+      required
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent bg-white"
+    >
+      <option value="">Select your status</option>
+      <option value="Full-time RVer">Full-time RVer</option>
+      <option value="Part-time RVer">Part-time RVer</option>
+      <option value="Planning to start RVing">Planning to start RVing</option>
+      <option value="Rally organizer">Rally organizer</option>
+    </select>
+  </div>
+
+  <!-- Message -->
+  <div>
+    <label for="message" class="block text-sm font-semibold text-dark mb-1">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      required
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent resize-y"
+      placeholder="Tell us about your protection needs..."
+    ></textarea>
+  </div>
+
+  <!-- Consultation checkbox -->
+  <div class="flex items-start gap-3">
+    <input
+      type="checkbox"
+      id="consultation"
+      name="consultation"
+      value="Yes"
+      class="mt-1 w-4 h-4 text-orange border-gray-300 rounded focus:ring-orange"
+    />
+    <label for="consultation" class="text-sm text-gray-600">
+      I'd like to schedule a free consultation call
+    </label>
+  </div>
+
+  <!-- hCaptcha -->
+  <div class="h-captcha" data-captcha="true"></div>
+
+  <!-- Submit -->
+  <button
+    type="submit"
+    class="w-full bg-orange hover:bg-orange-dark text-white font-bold uppercase tracking-wider py-3 px-6 rounded-lg transition-colors text-sm"
+  >
+    Send Message
+  </button>
+</form>
+
+<script src="https://web3forms.com/client/script.js" async defer></script>

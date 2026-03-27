@@ -1,0 +1,127 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import TestimonialCard from '../components/ui/TestimonialCard.astro';
+import Button from '../components/ui/Button.astro';
+import { testimonials } from '../data/testimonials';
+import { siteInfo } from '../data/navigation';
+---
+
+<PageLayout
+  title="About"
+  description="Learn about Shield Your Journey — founded by Jennifer Sansford, a full-time RVer and protection specialist helping RV families stay safe on the road."
+  jsonLdType="LocalBusiness"
+>
+  <!-- Hero Banner -->
+  <section class="bg-teal text-white py-16">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h1 class="font-heading text-4xl md:text-5xl font-bold text-white mb-4">About Us</h1>
+      <p class="text-white/80 text-lg max-w-2xl mx-auto">
+        Protecting RV families with solutions born from real road experience.
+      </p>
+    </div>
+  </section>
+
+  <!-- Founder Story -->
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="font-heading text-3xl font-bold text-dark mb-4">Our Story</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            When Jennifer Sansford and her family hit the road full-time, they quickly realized how exposed traveling families really are. Unsecured campground networks, identity risks from constant public Wi-Fi use, and legal questions that crossed state lines — the gaps were everywhere, and no single solution was built for how RVers actually live.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            That discovery sparked months of research — vetting legal service providers, identity protection platforms, and cybersecurity tools against the real demands of mobile family life. The result was a bundled solution that actually travels with you, built on partnerships Jennifer tested on her own family first.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            Today, Shield Your Journey exists to make sure no RV family has to figure this out alone. We're building a community of protected travelers and providing the ongoing, personal support that the road — and life on it — actually demands.
+          </p>
+        </div>
+        <div class="rounded-lg overflow-hidden">
+          <img src="/images/syj-family-photo.webp" alt="The Sansford family with their RV" class="w-full h-auto rounded-lg" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-16 bg-light-gray">
+    <div class="max-w-6xl mx-auto px-4">
+      <SectionHeading
+        title="Meet Jennifer"
+        subtitle="The person behind the protection — and the one who picks up the phone."
+      />
+      <div class="max-w-md mx-auto">
+        <div class="bg-white rounded-lg shadow-md p-8 text-center">
+          <div class="w-24 h-24 bg-cream rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-user text-3xl text-teal"></i>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-dark mb-1">Jennifer Sansford</h3>
+          <p class="text-orange font-medium text-sm mb-3">Founder & Lead Protection Specialist</p>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Jennifer handles every client consultation personally, vets each service against real road experience, and stays involved long after sign-up. When you have a question or a problem, you reach Jennifer directly — not a call center.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <SectionHeading
+        title="Our Values"
+        subtitle="The principles that guide everything we do."
+      />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {[
+          { icon: 'fa-solid fa-eye', title: 'Transparency First', desc: 'We\'re upfront about how we work and who we partner with. Our job is to match you with the right protection — not to push the most expensive option.' },
+          { icon: 'fa-solid fa-heart', title: 'Family-Tested Solutions', desc: 'Every service we recommend is actively running on our own devices and in our own rig. If we wouldn\'t trust it for our kids, we won\'t recommend it for yours.' },
+          { icon: 'fa-solid fa-headset', title: 'Ongoing Support', desc: 'We stay in your corner after the sale. From router setup questions to identity restoration guidance, we\'re a real resource for the real challenges that come with life on the road.' },
+          { icon: 'fa-solid fa-users', title: 'Community Focus', desc: 'We\'re growing a network of protected RV families who share knowledge, experiences, and support. Because the best defense is a community that looks out for each other.' },
+        ].map((value) => (
+          <div class="flex gap-4">
+            <div class="w-12 h-12 bg-orange/10 rounded-lg flex items-center justify-center shrink-0">
+              <i class={`${value.icon} text-orange text-lg`}></i>
+            </div>
+            <div>
+              <h3 class="font-heading text-lg font-semibold text-dark mb-1">{value.title}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">{value.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 bg-cream">
+    <div class="max-w-6xl mx-auto px-4">
+      <SectionHeading title="What Our Families Say" />
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {testimonials.map((t) => (
+          <TestimonialCard quote={t.quote} name={t.name} role={t.role} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="font-heading text-3xl font-bold text-dark mb-4">Ready to Protect Your Family?</h2>
+      <p class="text-gray-600 mb-6">
+        Schedule a free consultation to find the right protection plan for your RV lifestyle.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <Button href="/contact/" variant="primary" size="lg">
+          Get in Touch
+        </Button>
+        <a href={siteInfo.phoneTel} class="text-teal hover:text-orange font-semibold">
+          <i class="fa-solid fa-phone mr-2"></i>{siteInfo.phone}
+        </a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

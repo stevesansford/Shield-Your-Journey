@@ -1,0 +1,83 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Button from '../components/ui/Button.astro';
+import { siteInfo } from '../data/navigation';
+---
+
+<PageLayout
+  title="Thank You"
+  description="Thank you for contacting Shield Your Journey. Your RV Protection Checklist is on its way!"
+>
+  <section class="py-20">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <!-- Checkmark -->
+      <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+        <i class="fa-solid fa-check text-3xl text-green-600"></i>
+      </div>
+
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-dark mb-4">
+        You're In! Your Full-Timer's Legal Protection Checklist is heading to your inbox right now.
+      </h1>
+      <p class="text-gray-600 text-lg mb-2">
+        Look for an email from Jennifer at Shield Your Journey. It should arrive within the next 5 minutes.
+      </p>
+      <p class="text-gray-500 text-sm mb-10">
+        If you don't see it, check your spam or promotions folder.
+      </p>
+    </div>
+  </section>
+
+  <!-- Educational Content -->
+  <section class="py-16 bg-light-gray">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-dark mb-6 text-center">
+        Discover How We Stay Protected on the Road
+      </h2>
+      <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+        <p class="text-gray-600 leading-relaxed mb-4">
+          Most legal plans are built for people who stay put. They assume you have a local attorney, a home state, and the luxury of waiting. RV families don't have that. You need coverage that works in every state, attorney access when you're pulled over at midnight in Montana, and affordable monthly costs that fit a mobile budget — not a $300/hour retainer.
+        </p>
+        <p class="text-gray-600 leading-relaxed">
+          That's exactly what Shield Your Journey is built around. We've done the research, tested the services on our own family, and put together a protection plan designed specifically for life on the road — legal access, identity monitoring, and cybersecurity that moves with you.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="https://sansfords.legalshieldassociate.com/protect" variant="primary" size="lg" target="_blank" rel="noopener noreferrer">
+          Watch How We Stay Protected
+        </Button>
+        <Button href="/services/" variant="secondary" size="lg">
+          Learn How It Works
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <div class="w-32 h-32 bg-cream rounded-full flex items-center justify-center shrink-0">
+          <i class="fa-solid fa-user text-4xl text-teal"></i>
+        </div>
+        <div>
+          <h3 class="font-heading text-xl font-bold text-dark mb-1">Jennifer Sansford</h3>
+          <p class="text-orange font-medium text-sm mb-3">Founder & Lead Protection Specialist</p>
+          <p class="text-gray-600 leading-relaxed">
+            Jennifer has spent over 15 years helping families navigate legal coverage and protection services. As a full-time RVer herself, she brings firsthand road experience to every consultation — and she's personally available when you have questions.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact reminder -->
+  <section class="py-10 bg-teal text-white text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="text-white/80 mb-2">Questions? Reach out anytime.</p>
+      <a href={siteInfo.phoneTel} class="text-xl font-bold text-white hover:text-orange-light">
+        <i class="fa-solid fa-phone mr-2"></i>{siteInfo.phone}
+      </a>
+    </div>
+  </section>
+</PageLayout>

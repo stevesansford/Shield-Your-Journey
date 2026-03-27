@@ -1,0 +1,25 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import { services } from '../../data/services';
+---
+
+<section class="py-16 bg-light-gray">
+  <div class="max-w-6xl mx-auto px-4">
+    <SectionHeading
+      title="Three Pillars of Protection"
+      subtitle="Comprehensive coverage designed for RV families who need protection that travels with them."
+    />
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {services.map((service) => (
+        <div class="bg-white rounded-lg shadow-md p-8 text-center hover:shadow-lg transition-shadow">
+          <div class="w-16 h-16 bg-orange/10 rounded-full flex items-center justify-center mx-auto mb-5">
+            <i class={`${service.icon} text-2xl text-orange`}></i>
+          </div>
+          <h3 class="font-heading text-xl font-semibold text-dark mb-3">{service.title}</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">{service.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
